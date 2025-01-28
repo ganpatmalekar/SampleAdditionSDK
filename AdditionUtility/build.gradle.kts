@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("maven-publish")    // New Added
+//    id("maven-publish")    // New Added
 }
 
 android {
@@ -35,11 +35,11 @@ android {
 }
 
 // New Added
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17)) // Use Java 17
-    }
-}
+//java {
+//    toolchain {
+//        languageVersion.set(JavaLanguageVersion.of(17)) // Use Java 17
+//    }
+//}
 
 // New Added
 //publishing {
@@ -62,49 +62,49 @@ java {
 //    }
 //}
 
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.github.ganpatmalekar" // Replace with your GitHub username
-            artifactId = "SampleAdditionSDK"     // Replace with your repository name
-            version = "1.0.6"                    // Replace with your desired version
-
-            // Use the AAR file produced by the release build
-            afterEvaluate {
-                from(components["release"])
-            }
-
-            pom {
-                name.set("AdditionUtility")  // Library name
-                description.set("This is a sample addition library") // Library description
-                url.set("https://github.com/ganpatmalekar/SampleAdditionSDK") // Repository URL
-                licenses {
-                    license {
-                        name.set("MIT License")
-                        url.set("https://opensource.org/licenses/MIT")
-                    }
-                }
-                developers {
-                    developer {
-                        id.set("ganpatmalekar")
-                        name.set("Ganpat Malekar")
-                    }
-                }
-                scm {
-                    connection.set("scm:git:git://github.com/ganpatmalekar/SampleAdditionSDK.git")
-                    developerConnection.set("scm:git:ssh://github.com/ganpatmalekar/SampleAdditionSDK.git")
-                    url.set("https://github.com/ganpatmalekar/SampleAdditionSDK")
-                }
-            }
-        }
-    }
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://jitpack.io") // Use JitPack's Maven repository
-        }
-    }
-}
+//publishing {
+//    publications {
+//        create<MavenPublication>("maven") {
+//            groupId = "com.github.ganpatmalekar" // Replace with your GitHub username
+//            artifactId = "SampleAdditionSDK"     // Replace with your repository name
+//            version = "1.0.6"                    // Replace with your desired version
+//
+//            // Use the AAR file produced by the release build
+//            afterEvaluate {
+//                from(components["release"])
+//            }
+//
+//            pom {
+//                name.set("AdditionUtility")  // Library name
+//                description.set("This is a sample addition library") // Library description
+//                url.set("https://github.com/ganpatmalekar/SampleAdditionSDK") // Repository URL
+//                licenses {
+//                    license {
+//                        name.set("MIT License")
+//                        url.set("https://opensource.org/licenses/MIT")
+//                    }
+//                }
+//                developers {
+//                    developer {
+//                        id.set("ganpatmalekar")
+//                        name.set("Ganpat Malekar")
+//                    }
+//                }
+//                scm {
+//                    connection.set("scm:git:git://github.com/ganpatmalekar/SampleAdditionSDK.git")
+//                    developerConnection.set("scm:git:ssh://github.com/ganpatmalekar/SampleAdditionSDK.git")
+//                    url.set("https://github.com/ganpatmalekar/SampleAdditionSDK")
+//                }
+//            }
+//        }
+//    }
+//    repositories {
+//        maven {
+//            name = "GitHubPackages"
+//            url = uri("https://jitpack.io") // Use JitPack's Maven repository
+//        }
+//    }
+//}
 
 dependencies {
 
