@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")    // New Added
 }
 
 android {
@@ -21,6 +22,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            consumerProguardFiles("consumer-rules.pro")      // ADD This
         }
     }
     compileOptions {
@@ -29,6 +31,34 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+}
+
+// New Added
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17)) // Use Java 17
+    }
+}
+
+// New Added
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.ganpatmalekar" // Replace with your GitHub username
+            artifactId = "SampleAdditionSDK"            // Replace with your repository name
+            version = "1.0.5"                // Replace with your desired version
+
+            pom {
+                description.set("This is sample addition library") // Replace with your library description
+            }
+
+            // Attach the library's AAR or JAR file
+//            from(components["release"]) // Ensure "release" component exists in your module
+        }
+    }
+    repositories {
+        mavenLocal() // Publishes to your local Maven repository
     }
 }
 
