@@ -42,23 +42,67 @@ java {
 }
 
 // New Added
+//publishing {
+//    publications {
+//        create<MavenPublication>("maven") {
+//            groupId = "com.github.ganpatmalekar" // Replace with your GitHub username
+//            artifactId = "SampleAdditionSDK"            // Replace with your repository name
+//            version = "1.0.5"                // Replace with your desired version
+//
+//            pom {
+//                description.set("This is sample addition library") // Replace with your library description
+//            }
+//
+//            // Attach the library's AAR or JAR file
+//            from(components["release"]) // Ensure "release" component exists in your module
+//        }
+//    }
+//    repositories {
+//        mavenLocal() // Publishes to your local Maven repository
+//    }
+//}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "com.github.ganpatmalekar" // Replace with your GitHub username
-            artifactId = "SampleAdditionSDK"            // Replace with your repository name
-            version = "1.0.5"                // Replace with your desired version
+            artifactId = "SampleAdditionSDK"     // Replace with your repository name
+            version = "1.0.6"                    // Replace with your desired version
 
-            pom {
-                description.set("This is sample addition library") // Replace with your library description
+            // Use the AAR file produced by the release build
+            afterEvaluate {
+                from(components["release"])
             }
 
-            // Attach the library's AAR or JAR file
-//            from(components["release"]) // Ensure "release" component exists in your module
+            pom {
+                name.set("AdditionUtility")  // Library name
+                description.set("This is a sample addition library") // Library description
+                url.set("https://github.com/ganpatmalekar/SampleAdditionSDK") // Repository URL
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("https://opensource.org/licenses/MIT")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("ganpatmalekar")
+                        name.set("Ganpat Malekar")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/ganpatmalekar/SampleAdditionSDK.git")
+                    developerConnection.set("scm:git:ssh://github.com/ganpatmalekar/SampleAdditionSDK.git")
+                    url.set("https://github.com/ganpatmalekar/SampleAdditionSDK")
+                }
+            }
         }
     }
     repositories {
-        mavenLocal() // Publishes to your local Maven repository
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://jitpack.io") // Use JitPack's Maven repository
+        }
     }
 }
 
