@@ -1,0 +1,16 @@
+# compiler: R8
+# compiler_version: 8.1.68
+# common_typos_disable
+# {"id":"com.android.tools.r8.mapping","version":"2.2"}
+# pg_map_id: bb29680
+# pg_map_hash: SHA-256 bb29680d14be398ecc8daf2e9ede158032b880fc9be96ace46dafd655898ae36
+com.gsm.additionutility.AdditionActivity -> com.gsm.additionutility.AdditionActivity:
+# {"id":"sourceFile","fileName":"AdditionActivity.kt"}
+    1:1:void <init>():10:10 -> <init>
+    1:10:void onCreate$lambda$1(android.widget.EditText,android.widget.EditText,com.gsm.additionutility.AdditionActivity,android.view.View):21:30 -> a
+    1:8:void onCreate(android.os.Bundle):13:20 -> onCreate
+com.gsm.additionutility.AdditionUtility -> com.gsm.additionutility.AdditionUtility:
+# {"id":"sourceFile","fileName":"AdditionUtility.kt"}
+    1:1:void <init>():6:6 -> <init>
+    1:1:android.content.Intent getAdditionIntent(android.content.Context):13:13 -> getAdditionIntent
+    1:2:void launchAdditionActivity(android.content.Context):8:9 -> launchAdditionActivity
